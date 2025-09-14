@@ -14,14 +14,13 @@ const LandingPage = () => {
       if (!canScrollVertically) {
         // Aperture opening phase - start from 50% and go to 100%
         const scrolled = window.scrollY;
-        const maxScroll = window.innerHeight * 0.6; // Reduced scroll distance needed
-        const baseProgress = 0.5; // Start at 50%
+        const maxScroll = window.innerHeight * 0.5; // Scroll distance needed from 50% to 100%
         const scrollProgress = Math.min(scrolled / maxScroll, 1);
-        const totalProgress = baseProgress + (scrollProgress * 0.5); // 50% to 100%
+        const totalProgress = 0.5 + (scrollProgress * 0.5); // 50% + (scroll * 50%) = 50% to 100%
         
         setApertureProgress(totalProgress);
         
-        if (totalProgress >= 1 && !apertureOpen) {
+        if (totalProgress >= 0.99 && !apertureOpen) { // Trigger at 99% to ensure it activates
           setApertureOpen(true);
           setTimeout(() => {
             setCanScrollVertically(true);
