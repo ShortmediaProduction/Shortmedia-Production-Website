@@ -112,13 +112,6 @@ const LandingPage = () => {
 
         {/* Floating Video Frames - REMOVED */}
 
-        {/* Lens Flare Effects */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-white rounded-full opacity-80 animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-orange-300 rounded-full opacity-60 animate-pulse delay-500"></div>
-          <div className="absolute bottom-1/3 right-1/2 w-3 h-3 bg-blue-300/50 rounded-full animate-pulse delay-1000"></div>
-        </div>
-
         {/* Main Content */}
         <div 
           className={`text-center z-30 px-6 transition-all duration-2000 ease-out delay-500 ${
