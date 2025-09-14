@@ -66,7 +66,7 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900">
-      {/* Hero Section - Sunset at Sea */}
+      {/* Hero Section - Sunset at Sea with Aperture */}
       <section 
         ref={heroRef}
         className="relative h-screen flex items-center justify-center overflow-hidden"
@@ -109,8 +109,93 @@ const LandingPage = () => {
           <div className="floating-particles"></div>
         </div>
 
+        {/* Aperture Blades Overlay */}
+        {!apertureOpen && (
+          <div className="absolute inset-0 z-30">
+            {/* Top Blade */}
+            <div 
+              className="absolute top-0 left-0 right-0 bg-black origin-bottom"
+              style={{
+                height: '50%',
+                ...apertureBladesStyle,
+                clipPath: 'polygon(0 0, 100% 0, 90% 100%, 10% 100%)'
+              }}
+            ></div>
+            
+            {/* Bottom Blade */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 bg-black origin-top"
+              style={{
+                height: '50%',
+                ...apertureBladesStyle,
+                clipPath: 'polygon(10% 0, 90% 0, 100% 100%, 0% 100%)'
+              }}
+            ></div>
+            
+            {/* Left Blade */}
+            <div 
+              className="absolute top-0 bottom-0 left-0 bg-black origin-right"
+              style={{
+                width: '50%',
+                ...apertureBladesStyle,
+                clipPath: 'polygon(0 0, 100% 10%, 100% 90%, 0 100%)'
+              }}
+            ></div>
+            
+            {/* Right Blade */}
+            <div 
+              className="absolute top-0 bottom-0 right-0 bg-black origin-left"
+              style={{
+                width: '50%',
+                ...apertureBladesStyle,
+                clipPath: 'polygon(0 10%, 100% 0, 100% 100%, 0 90%)'
+              }}
+            ></div>
+
+            {/* Diagonal Blades */}
+            <div 
+              className="absolute inset-0 bg-black origin-bottom-right"
+              style={{
+                ...apertureBladesStyle,
+                clipPath: 'polygon(0 0, 60% 0, 0 60%)'
+              }}
+            ></div>
+            
+            <div 
+              className="absolute inset-0 bg-black origin-bottom-left"
+              style={{
+                ...apertureBladesStyle,
+                clipPath: 'polygon(40% 0, 100% 0, 100% 60%)'
+              }}
+            ></div>
+            
+            <div 
+              className="absolute inset-0 bg-black origin-top-right"
+              style={{
+                ...apertureBladesStyle,
+                clipPath: 'polygon(0 40%, 60% 100%, 0 100%)'
+              }}
+            ></div>
+            
+            <div 
+              className="absolute inset-0 bg-black origin-top-left"
+              style={{
+                ...apertureBladesStyle,
+                clipPath: 'polygon(40% 100%, 100% 40%, 100% 100%)'
+              }}
+            ></div>
+          </div>
+        )}
+
         {/* Hero Content */}
-        <div className="text-center z-10 px-6">
+        <div 
+          className="text-center z-10 px-6"
+          style={{
+            opacity: canScrollVertically ? 1 : apertureProgress,
+            transform: `scale(${0.8 + (apertureProgress * 0.2)})`,
+            transition: apertureOpen ? 'all 0.5s ease-out' : 'none'
+          }}
+        >
           <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight hero-text gradient-header-text">
             {mockData.brand.name}
           </h1>
@@ -123,12 +208,54 @@ const LandingPage = () => {
           </button>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+        {/* Aperture Progress Indicator */}
+        {!apertureOpen && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
+            <div className="flex flex-col items-center text-white">
+              <div className="w-20 h-20 border-3 border-orange-400 rounded-full flex items-center justify-center mb-4 relative">
+                {/* Camera Aperture Icon */}
+                <Camera size={32} className="text-orange-400" />
+                {/* Progress Ring */}
+                <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke="rgba(245, 158, 11, 0.3)"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke="#f59e0b"
+                    strokeWidth="3"
+                    fill="none"
+                    strokeDasharray={`${2 * Math.PI * 45}`}
+                    strokeDashoffset={`${2 * Math.PI * 45 * (1 - apertureProgress)}`}
+                    style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
+                  />
+                </svg>
+              </div>
+              <span className="text-sm font-mono tracking-wider uppercase mb-2">
+                Opening Aperture
+              </span>
+              <span className="text-xs text-orange-400">
+                {Math.round(apertureProgress * 100)}%
+              </span>
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Normal Scroll Indicator - Only visible after aperture opens */}
+        {canScrollVertically && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* About Section */}
