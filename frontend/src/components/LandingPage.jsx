@@ -35,23 +35,32 @@ const LandingPage = () => {
           background: `
             linear-gradient(to bottom, 
               #0f172a 0%, 
-              #1e293b 40%, 
-              #334155 60%, 
-              #475569 70%
-            ),
-            radial-gradient(ellipse 120% 50% at center 100%, 
-              #ff6b35 0%, 
-              #f59e0b 30%, 
-              #ef4444 50%, 
-              #7c3aed 70%, 
-              transparent 100%
+              #1e293b 60%, 
+              #334155 80%, 
+              #475569 90%
             )
           `
         }}
       >
+        {/* Sunset Gradient positioned at bottom */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(ellipse 140% 60% at center 100%, 
+                #ff6b35 0%, 
+                #f59e0b 25%, 
+                #ef4444 45%, 
+                #7c3aed 65%, 
+                transparent 85%
+              )
+            `
+          }}
+        ></div>
+
         {/* Ocean waves effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-slate-800/80 to-transparent">
-          <div className="absolute inset-0 opacity-30">
+        <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-slate-800/60 to-transparent">
+          <div className="absolute inset-0 opacity-40">
             <div className="wave-animation"></div>
           </div>
         </div>
@@ -63,7 +72,7 @@ const LandingPage = () => {
 
         {/* Hero Content */}
         <div className="text-center z-10 px-6">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight hero-text">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight hero-text gradient-header-text">
             {mockData.brand.name}
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">

@@ -51,6 +51,31 @@
     }
 }
 
+/* Gradient Header Text */
+.gradient-header-text {
+    background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        #ff6b35 25%, 
+        #f59e0b 50%, 
+        #ffffff 75%, 
+        #ff6b35 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
 .floating-particles {
     position: absolute;
     inset: 0;
@@ -94,6 +119,44 @@
     50% {
         background-position: 200% 0, -200% 0;
     }
+}
+
+/* Aperture Blade Animations */
+.aperture-blade {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.aperture-container {
+    perspective: 1000px;
+}
+
+/* Aperture Opening Effect */
+@keyframes apertureOpen {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.aperture-opening {
+    animation: apertureOpen 0.5s ease-out forwards;
+}
+
+/* Era Reveal Animations */
+.era-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.era-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Scroll Animations */
@@ -227,6 +290,11 @@
     
     .cinematic-grid > * {
         margin-bottom: 2rem;
+    }
+
+    /* Mobile aperture adjustments */
+    .aperture-blade {
+        transition: transform 0.05s ease-out;
     }
 }
 
@@ -383,4 +451,29 @@ a:focus {
 .btn-cinema:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+}
+
+/* Camera Aperture Specific Styles */
+.aperture-progress {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.aperture-progress::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(245, 158, 11, 0.3);
+    border-radius: 50%;
+}
+
+.aperture-progress::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    background: radial-gradient(circle, #f59e0b 0%, transparent 70%);
+    border-radius: 50%;
+    transform: scale(var(--progress, 0));
+    transition: transform 0.1s ease-out;
 }
