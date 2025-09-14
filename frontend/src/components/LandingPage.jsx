@@ -47,10 +47,10 @@ const LandingPage = () => {
         style={{
           background: `
             radial-gradient(ellipse 140% 60% at center 100%, 
-              #ff6b35 0%, 
-              #f59e0b 25%, 
-              #ef4444 45%, 
-              #7c3aed 65%, 
+              rgba(255, 107, 53, 0.4) 0%, 
+              rgba(245, 158, 11, 0.3) 25%, 
+              rgba(239, 68, 68, 0.2) 45%, 
+              rgba(124, 58, 237, 0.2) 65%, 
               transparent 85%
             ),
             linear-gradient(to bottom, 
