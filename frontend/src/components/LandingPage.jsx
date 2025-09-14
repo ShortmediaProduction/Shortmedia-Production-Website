@@ -1,37 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Play, Camera, Film, Smartphone, Star, Award, Users, Eye } from 'lucide-react';
+import { Play, Camera, Film, Smartphone, Star, Award, Users, Eye, PlayCircle, Zap } from 'lucide-react';
 import { mockData } from '../data/mockData';
 
 const LandingPage = () => {
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
-  const [apertureProgress, setApertureProgress] = useState(0.5); // Start half-opened
-  const [apertureOpen, setApertureOpen] = useState(false);
-  const [canScrollVertically, setCanScrollVertically] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [activeFrame, setActiveFrame] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!canScrollVertically) {
-        // Aperture opening phase - start from 50% and go to 100%
-        const scrolled = window.scrollY;
-        const maxScroll = window.innerHeight * 0.5; // Scroll distance needed from 50% to 100%
-        const scrollProgress = Math.min(scrolled / maxScroll, 1);
-        const totalProgress = 0.5 + (scrollProgress * 0.5); // 50% + (scroll * 50%) = 50% to 100%
-        
-        setApertureProgress(totalProgress);
-        
-        if (totalProgress >= 0.99 && !apertureOpen) { // Trigger at 99% to ensure it activates
-          setApertureOpen(true);
-          setTimeout(() => {
-            setCanScrollVertically(true);
-            // Reset scroll and enable normal scrolling
-            window.scrollTo(0, 0);
-          }, 800);
-        }
-      }
-    };
+    // Trigger entrance animations after component mounts
+    setTimeout(() => setIsLoaded(true), 100);
 
-    // Set up intersection observer for normal page sections
+    // Cycle through video frames
+    const frameInterval = setInterval(() => {
+      setActiveFrame(prev => (prev + 1) % 3);
+    }, 3000);
+
+    // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,25 +29,14 @@ const LandingPage = () => {
       { threshold: 0.1 }
     );
 
-    // Observe elements only after aperture is open
-    if (canScrollVertically) {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach((el) => observer.observe(el));
-    }
-
-    window.addEventListener('scroll', handleScroll);
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach((el) => observer.observe(el));
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
+      clearInterval(frameInterval);
     };
-  }, [canScrollVertically, apertureOpen]);
-
-  const apertureBladesStyle = {
-    transform: `scale(${1 - apertureProgress})`,
-    opacity: apertureOpen ? 0 : 1,
-    transition: apertureOpen ? 'opacity 0.8s ease-out' : 'transform 0.1s ease-out'
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-900">
