@@ -243,6 +243,9 @@ const LandingPage = () => {
               <span className="text-xs text-orange-400">
                 {Math.round(apertureProgress * 100)}%
               </span>
+              <span className="text-xs text-slate-400 mt-1">
+                Scroll: {Math.round(window.scrollY)}px
+              </span>
             </div>
           </div>
         )}
