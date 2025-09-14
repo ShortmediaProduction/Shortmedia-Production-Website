@@ -40,12 +40,19 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900">
-      {/* Hero Section - Sunset at Sea with Aperture */}
+      {/* Cinematic Hero Section for Videographer */}
       <section 
         ref={heroRef}
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
           background: `
+            radial-gradient(ellipse 140% 60% at center 100%, 
+              #ff6b35 0%, 
+              #f59e0b 25%, 
+              #ef4444 45%, 
+              #7c3aed 65%, 
+              transparent 85%
+            ),
             linear-gradient(to bottom, 
               #0f172a 0%, 
               #1e293b 60%, 
@@ -55,184 +62,156 @@ const LandingPage = () => {
           `
         }}
       >
-        {/* Sunset Gradient positioned at bottom */}
+        {/* Cinematic Letterbox Bars */}
         <div 
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse 140% 60% at center 100%, 
-                #ff6b35 0%, 
-                #f59e0b 25%, 
-                #ef4444 45%, 
-                #7c3aed 65%, 
-                transparent 85%
-              )
-            `
-          }}
-        ></div>
-
-        {/* Ocean waves effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-slate-800/60 to-transparent">
-          <div className="absolute inset-0 opacity-40">
-            <div className="wave-animation"></div>
-          </div>
-        </div>
-
-        {/* Background Animation */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="floating-particles"></div>
-        </div>
-
-        {/* Aperture Blades Overlay */}
-        {!apertureOpen && (
-          <div className="absolute inset-0 z-30">
-            {/* Top Blade */}
-            <div 
-              className="absolute top-0 left-0 right-0 bg-black origin-bottom"
-              style={{
-                height: '50%',
-                ...apertureBladesStyle,
-                clipPath: 'polygon(0 0, 100% 0, 90% 100%, 10% 100%)'
-              }}
-            ></div>
-            
-            {/* Bottom Blade */}
-            <div 
-              className="absolute bottom-0 left-0 right-0 bg-black origin-top"
-              style={{
-                height: '50%',
-                ...apertureBladesStyle,
-                clipPath: 'polygon(10% 0, 90% 0, 100% 100%, 0% 100%)'
-              }}
-            ></div>
-            
-            {/* Left Blade */}
-            <div 
-              className="absolute top-0 bottom-0 left-0 bg-black origin-right"
-              style={{
-                width: '50%',
-                ...apertureBladesStyle,
-                clipPath: 'polygon(0 0, 100% 10%, 100% 90%, 0 100%)'
-              }}
-            ></div>
-            
-            {/* Right Blade */}
-            <div 
-              className="absolute top-0 bottom-0 right-0 bg-black origin-left"
-              style={{
-                width: '50%',
-                ...apertureBladesStyle,
-                clipPath: 'polygon(0 10%, 100% 0, 100% 100%, 0 90%)'
-              }}
-            ></div>
-
-            {/* Diagonal Blades */}
-            <div 
-              className="absolute inset-0 bg-black origin-bottom-right"
-              style={{
-                ...apertureBladesStyle,
-                clipPath: 'polygon(0 0, 60% 0, 0 60%)'
-              }}
-            ></div>
-            
-            <div 
-              className="absolute inset-0 bg-black origin-bottom-left"
-              style={{
-                ...apertureBladesStyle,
-                clipPath: 'polygon(40% 0, 100% 0, 100% 60%)'
-              }}
-            ></div>
-            
-            <div 
-              className="absolute inset-0 bg-black origin-top-right"
-              style={{
-                ...apertureBladesStyle,
-                clipPath: 'polygon(0 40%, 60% 100%, 0 100%)'
-              }}
-            ></div>
-            
-            <div 
-              className="absolute inset-0 bg-black origin-top-left"
-              style={{
-                ...apertureBladesStyle,
-                clipPath: 'polygon(40% 100%, 100% 40%, 100% 100%)'
-              }}
-            ></div>
-          </div>
-        )}
-
-        {/* Hero Content */}
-        <div 
-          className="text-center z-10 px-6"
-          style={{
-            opacity: apertureProgress, // Start visible at 50% since aperture starts half-open
-            transform: `scale(${0.9 + (apertureProgress * 0.1)})`, // Subtle scale effect
-            transition: apertureOpen ? 'all 0.8s ease-out' : 'all 0.1s ease-out'
-          }}
+          className={`absolute top-0 left-0 right-0 h-20 bg-black z-20 transition-transform duration-2000 ease-out ${
+            isLoaded ? 'transform translate-y-0' : 'transform -translate-y-full'
+          }`}
         >
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight hero-text gradient-header-text">
-            {mockData.brand.name}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            {mockData.brand.tagline}
-          </p>
-          <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto shadow-lg">
-            <Play size={20} />
-            Watch My Work
-          </button>
+          <div className="absolute bottom-2 left-4 text-orange-400 font-mono text-xs tracking-wider">
+            REC • SHORTMEDIA
+          </div>
+          <div className="absolute bottom-2 right-4 text-orange-400 font-mono text-xs">
+            4K • 24fps
+          </div>
+        </div>
+        
+        <div 
+          className={`absolute bottom-0 left-0 right-0 h-20 bg-black z-20 transition-transform duration-2000 ease-out ${
+            isLoaded ? 'transform translate-y-0' : 'transform translate-y-full'
+          }`}
+        >
+          <div className="absolute top-2 left-4 text-orange-400 font-mono text-xs tracking-wider">
+            TC: 00:00:00:00
+          </div>
+          <div className="absolute top-2 right-4 text-orange-400 font-mono text-xs">
+            ISO 100 • f/2.8
+          </div>
         </div>
 
-        {/* Aperture Progress Indicator */}
-        {!apertureOpen && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
-            <div className="flex flex-col items-center text-white">
-              <div className="w-20 h-20 border-3 border-orange-400 rounded-full flex items-center justify-center mb-4 relative">
-                {/* Camera Aperture Icon */}
-                <Camera size={32} className="text-orange-400" />
-                {/* Progress Ring */}
-                <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="45"
-                    stroke="rgba(245, 158, 11, 0.3)"
-                    strokeWidth="2"
-                    fill="none"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="45"
-                    stroke="#f59e0b"
-                    strokeWidth="3"
-                    fill="none"
-                    strokeDasharray={`${2 * Math.PI * 45}`}
-                    strokeDashoffset={`${2 * Math.PI * 45 * (1 - apertureProgress)}`}
-                    style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
-                  />
-                </svg>
-              </div>
-              <span className="text-sm font-mono tracking-wider uppercase mb-2">
-                Opening Aperture
-              </span>
-              <span className="text-xs text-orange-400">
-                {Math.round(apertureProgress * 100)}%
-              </span>
-              <span className="text-xs text-slate-400 mt-1">
-                Scroll: {Math.round(window.scrollY)}px
-              </span>
-            </div>
-          </div>
-        )}
+        {/* Film Strip Decoration */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-black z-10 opacity-70">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i} 
+              className="w-8 h-4 bg-orange-400/30 mx-auto my-2 rounded-sm"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            ></div>
+          ))}
+        </div>
+        
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-black z-10 opacity-70">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i} 
+              className="w-8 h-4 bg-orange-400/30 mx-auto my-2 rounded-sm"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            ></div>
+          ))}
+        </div>
 
-        {/* Normal Scroll Indicator - Only visible after aperture opens */}
-        {canScrollVertically && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+        {/* Floating Video Frames */}
+        <div className="absolute inset-0 z-5">
+          {/* Frame 1 */}
+          <div 
+            className={`absolute top-1/4 left-1/4 w-32 h-20 bg-slate-800/80 border-2 border-orange-400/50 rounded-lg backdrop-blur-sm transition-all duration-1000 ${
+              activeFrame === 0 ? 'opacity-100 scale-110' : 'opacity-60 scale-100'
+            }`}
+          >
+            <div className="flex items-center justify-center h-full">
+              <Play size={24} className="text-orange-400" />
+            </div>
+            <div className="absolute -bottom-6 left-0 text-orange-400 text-xs font-mono">
+              Project_01.mp4
             </div>
           </div>
-        )}
+
+          {/* Frame 2 */}
+          <div 
+            className={`absolute top-3/4 right-1/4 w-32 h-20 bg-slate-800/80 border-2 border-purple-400/50 rounded-lg backdrop-blur-sm transition-all duration-1000 ${
+              activeFrame === 1 ? 'opacity-100 scale-110' : 'opacity-60 scale-100'
+            }`}
+          >
+            <div className="flex items-center justify-center h-full">
+              <Film size={24} className="text-purple-400" />
+            </div>
+            <div className="absolute -bottom-6 left-0 text-purple-400 text-xs font-mono">
+              Brand_Film.mp4
+            </div>
+          </div>
+
+          {/* Frame 3 */}
+          <div 
+            className={`absolute top-1/2 right-1/3 w-32 h-20 bg-slate-800/80 border-2 border-blue-400/50 rounded-lg backdrop-blur-sm transition-all duration-1000 ${
+              activeFrame === 2 ? 'opacity-100 scale-110' : 'opacity-60 scale-100'
+            }`}
+          >
+            <div className="flex items-center justify-center h-full">
+              <Camera size={24} className="text-blue-400" />
+            </div>
+            <div className="absolute -bottom-6 left-0 text-blue-400 text-xs font-mono">
+              Social_Ad.mp4
+            </div>
+          </div>
+        </div>
+
+        {/* Lens Flare Effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-white rounded-full opacity-80 animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-orange-400 rounded-full opacity-60 animate-pulse delay-500"></div>
+          <div className="absolute bottom-1/3 right-1/2 w-3 h-3 bg-blue-400/50 rounded-full animate-pulse delay-1000"></div>
+        </div>
+
+        {/* Main Content */}
+        <div 
+          className={`text-center z-30 px-6 transition-all duration-2000 ease-out delay-500 ${
+            isLoaded ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'
+          }`}
+        >
+          {/* Video Title Style Header */}
+          <div className="mb-8">
+            <div className="inline-flex items-center px-6 py-2 bg-black/50 backdrop-blur-md border border-orange-400/30 rounded-full mb-4">
+              <div className="w-2 h-2 bg-red-500 rounded-full mr-3 animate-pulse"></div>
+              <span className="text-orange-400 font-mono text-sm tracking-wider uppercase">
+                Now Playing: Director's Cut
+              </span>
+            </div>
+          </div>
+
+          <h1 className="text-7xl md:text-9xl font-bold mb-8 tracking-tight text-white leading-none">
+            <span className="block mb-4 bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
+              SHORT
+            </span>
+            <span className="block text-white">MEDIA</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Cinematic storytelling that captures hearts, minds, and moments that matter most.
+          </p>
+
+          {/* Main CTA - Large Play Button */}
+          <div className="flex flex-col items-center">
+            <button className="group relative w-32 h-32 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-110 shadow-2xl mb-6">
+              <PlayCircle size={64} className="text-white group-hover:scale-110 transition-transform duration-300" />
+              <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+            </button>
+            
+            <div className="text-center">
+              <div className="text-white font-semibold mb-2">Watch Showreel</div>
+              <div className="text-slate-400 text-sm font-mono">Duration: 2:30 • 4K Quality</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
+          <div className="flex flex-col items-center text-orange-400">
+            <div className="w-6 h-10 border-2 border-orange-400 rounded-full flex justify-center mb-2">
+              <div className="w-1 h-3 bg-orange-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
+            <span className="text-xs font-mono tracking-wider uppercase">Scroll Down</span>
+          </div>
+        </div>
       </section>
 
       {/* About Section - Only visible after aperture opens */}
