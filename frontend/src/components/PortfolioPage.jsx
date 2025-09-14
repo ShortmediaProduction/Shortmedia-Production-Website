@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Play, ExternalLink, Filter, Grid, List } from 'lucide-react';
+import { X, Play, ExternalLink, Filter, Grid, List, Film, Smartphone } from 'lucide-react';
 import { mockData } from '../data/mockData';
 
 const PortfolioPage = () => {
