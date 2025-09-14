@@ -81,31 +81,29 @@ export const mockData = {
     {
       title: "First Camera",
       year: "2013",
-      description: "Started my journey into visual storytelling with my first camera. This marked the beginning of my passion for capturing moments and telling stories through the lens.",
+      description: "The journey began with my first camera - a simple DSLR that opened my eyes to the power of visual storytelling. What started as a hobby quickly became a passion as I discovered the magic of capturing moments and emotions through the lens.",
+      details: "Canon EOS 600D - My gateway into photography and videography",
       icon: "camera"
     },
     {
       title: "Youtube Channel",
       year: "2018", 
-      description: "Launched my YouTube channel to share creative content and connect with fellow video enthusiasts. This platform became my testing ground for new techniques and storytelling approaches.",
+      description: "Launched my YouTube channel to share creative content and connect with fellow creators. This platform became my experimental ground for new techniques, storytelling approaches, and building a community of visual enthusiasts.",
+      details: "First video reached 10K views - Building an online presence",
       icon: "youtube"
     },
     {
-      title: "Mediamatik EFZ",
+      title: "Mediamatiker EFZ",
       year: "2021 - 2025",
-      description: "Completed my professional education in Media Technology, gaining comprehensive knowledge in digital media production, post-production workflows, and technical expertise.",
+      description: "Pursuing professional education in Media Technology, gaining comprehensive knowledge in digital media production, post-production workflows, and technical expertise. This formal training provided the foundation for professional-grade work.",
+      details: "Specialized in video production, digital editing, and media technology",
       icon: "graduation"
     },
     {
-      title: "Videographer at IWF AG",
-      year: "2025",
-      description: "Joined IWF AG as a professional videographer, working on diverse corporate projects and expanding my expertise in commercial video production.",
-      icon: "briefcase"
-    },
-    {
-      title: "Shortmedia",
-      year: "2024 - 2026",
-      description: "Founded Shortmedia to offer premium video production services. Focusing on creating cinematic experiences that elevate brands and tell meaningful stories.",
+      title: "Founding of Shortmedia",
+      year: "2024",
+      description: "Founded Shortmedia to offer premium video production services. The vision: creating cinematic experiences that elevate brands and tell meaningful stories. Focusing on quality, creativity, and client satisfaction.",
+      details: "From passion project to professional business",
       icon: "star"
     }
   ],
@@ -114,9 +112,9 @@ export const mockData = {
     projects: [
       {
         id: 1,
-        title: "Corporate Image Film",
-        client: "Tech Startup XYZ",
-        description: "A compelling story showcasing innovation and company culture through cinematic visuals and authentic testimonials that increased brand awareness by 150%.",
+        title: "Corporate Identity Film",
+        client: "Tech Innovations GmbH",
+        description: "A compelling brand story showcasing innovation and company culture through cinematic visuals and authentic testimonials that increased brand awareness by 150% and generated significant investor interest.",
         thumbnail: "/api/placeholder/400/250",
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
         tags: ["Imagefilm", "Corporate", "Storytelling"],
@@ -127,8 +125,8 @@ export const mockData = {
       {
         id: 2,
         title: "Product Launch Campaign",
-        client: "Design Agency ABC",
-        description: "High-energy promotional content that generated 2M+ views and significantly boosted product awareness across multiple platforms.",
+        client: "Creative Design Studio",
+        description: "High-energy promotional content for a revolutionary design tool launch. The campaign generated 2M+ views across platforms and significantly boosted product awareness and early adoption rates.",
         thumbnail: "/api/placeholder/400/250", 
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
         tags: ["Werbefilm", "Product", "Campaign"],
@@ -138,9 +136,9 @@ export const mockData = {
       },
       {
         id: 3,
-        title: "Social Media Series",
-        client: "Fashion Brand DEF",
-        description: "A series of engaging short-form content that increased social media engagement by 300% and drove significant sales growth.",
+        title: "Fashion Brand Series",
+        client: "Modern Fashion Collective",
+        description: "A series of engaging short-form content for social media that increased engagement by 300%. The campaign drove significant sales growth and established a strong brand presence online.",
         thumbnail: "/api/placeholder/400/250",
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
         tags: ["Social Media", "Fashion", "Series"],

@@ -27,14 +27,35 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900">
-      {/* Hero Section */}
+      {/* Hero Section - Sunset at Sea */}
       <section 
         ref={heroRef}
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
-          background: 'radial-gradient(ellipse at center, #ff6b35 0%, #1e3a8a 70%, #0f172a 100%)'
+          background: `
+            linear-gradient(to bottom, 
+              #0f172a 0%, 
+              #1e293b 40%, 
+              #334155 60%, 
+              #475569 70%
+            ),
+            radial-gradient(ellipse 120% 50% at center 100%, 
+              #ff6b35 0%, 
+              #f59e0b 30%, 
+              #ef4444 50%, 
+              #7c3aed 70%, 
+              transparent 100%
+            )
+          `
         }}
       >
+        {/* Ocean waves effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-slate-800/80 to-transparent">
+          <div className="absolute inset-0 opacity-30">
+            <div className="wave-animation"></div>
+          </div>
+        </div>
+
         {/* Background Animation */}
         <div className="absolute inset-0 opacity-20">
           <div className="floating-particles"></div>
@@ -45,10 +66,10 @@ const LandingPage = () => {
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight hero-text">
             {mockData.brand.name}
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             {mockData.brand.tagline}
           </p>
-          <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto">
+          <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto shadow-lg">
             <Play size={20} />
             Watch My Work
           </button>
@@ -56,8 +77,8 @@ const LandingPage = () => {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+          <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
