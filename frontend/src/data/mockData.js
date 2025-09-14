@@ -26,6 +26,57 @@ export const mockData = {
     }
   ],
 
+  achievements: [
+    {
+      number: "50+",
+      label: "Projects Completed",
+      description: "Successful video productions",
+      icon: "projects"
+    },
+    {
+      number: "25+",
+      label: "Happy Clients",
+      description: "Satisfied customers worldwide",
+      icon: "clients"
+    },
+    {
+      number: "2M+",
+      label: "Total Views",
+      description: "Across all platforms",
+      icon: "views"
+    },
+    {
+      number: "5",
+      label: "Awards Won",
+      description: "Industry recognitions",
+      icon: "awards"
+    }
+  ],
+
+  testimonials: [
+    {
+      name: "Sarah Mueller",
+      position: "Marketing Director",
+      company: "Tech Solutions GmbH",
+      quote: "Shortmedia transformed our company story into a captivating visual narrative. The professionalism and creative vision exceeded our expectations.",
+      rating: 5
+    },
+    {
+      name: "Michael Schmidt",
+      position: "CEO",
+      company: "Innovation Labs",
+      quote: "Outstanding work! The imagefilm perfectly captured our brand essence and significantly boosted our online engagement.",
+      rating: 5
+    },
+    {
+      name: "Lisa Weber",
+      position: "Brand Manager",
+      company: "Creative Agency",
+      quote: "Working with Shortmedia was seamless. They delivered high-quality content that resonated perfectly with our target audience.",
+      rating: 5
+    }
+  ],
+
   timeline: [
     {
       title: "First Camera",
@@ -65,28 +116,37 @@ export const mockData = {
         id: 1,
         title: "Corporate Image Film",
         client: "Tech Startup XYZ",
-        description: "A compelling story showcasing innovation and company culture through cinematic visuals and authentic testimonials.",
+        description: "A compelling story showcasing innovation and company culture through cinematic visuals and authentic testimonials that increased brand awareness by 150%.",
         thumbnail: "/api/placeholder/400/250",
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        tags: ["Imagefilm", "Corporate", "Storytelling"]
+        tags: ["Imagefilm", "Corporate", "Storytelling"],
+        duration: "3:45",
+        year: "2024",
+        views: "15.2K"
       },
       {
         id: 2,
         title: "Product Launch Campaign",
         client: "Design Agency ABC",
-        description: "High-energy promotional content that generated 2M+ views and significantly boosted product awareness.",
+        description: "High-energy promotional content that generated 2M+ views and significantly boosted product awareness across multiple platforms.",
         thumbnail: "/api/placeholder/400/250", 
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        tags: ["Werbefilm", "Product", "Campaign"]
+        tags: ["Werbefilm", "Product", "Campaign"],
+        duration: "2:15",
+        year: "2024",
+        views: "2.1M"
       },
       {
         id: 3,
         title: "Social Media Series",
         client: "Fashion Brand DEF",
-        description: "A series of engaging short-form content that increased social media engagement by 300%.",
+        description: "A series of engaging short-form content that increased social media engagement by 300% and drove significant sales growth.",
         thumbnail: "/api/placeholder/400/250",
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-        tags: ["Social Media", "Fashion", "Series"]
+        tags: ["Social Media", "Fashion", "Series"],
+        duration: "1:30",
+        year: "2023",
+        views: "500K"
       }
     ]
   }
