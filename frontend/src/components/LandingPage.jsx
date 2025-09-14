@@ -1,29 +1,68 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Play, Camera, Film, Smartphone, Star, Award, Users, Eye } from 'lucide-react';
 import { mockData } from '../data/mockData';
 
 const LandingPage = () => {
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
+  const [apertureProgress, setApertureProgress] = useState(0);
+  const [apertureOpen, setApertureOpen] = useState(false);
+  const [canScrollVertically, setCanScrollVertically] = useState(false);
 
   useEffect(() => {
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    const handleScroll = () => {
+      if (!canScrollVertically) {
+        // Aperture opening phase
+        const scrolled = window.scrollY;
+        const maxScroll = window.innerHeight * 0.8; // 80% of viewport height to fully open
+        const progress = Math.min(scrolled / maxScroll, 1);
+        setApertureProgress(progress);
+        
+        if (progress >= 1 && !apertureOpen) {
+          setApertureOpen(true);
+          setCanScrollVertically(true);
+          // Reset scroll position and enable normal scrolling
+          setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.body.style.overflow = 'auto';
+          }, 500);
+        }
+      } else {
+        // Normal page scrolling
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in-up');
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
 
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach((el) => observer.observe(el));
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach((el) => observer.observe(el));
+      }
+    };
 
-    return () => observer.disconnect();
-  }, []);
+    window.addEventListener('scroll', handleScroll);
+
+    // Initially allow scrolling for aperture animation
+    if (!canScrollVertically) {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = 'auto';
+    };
+  }, [canScrollVertically, apertureOpen]);
+
+  const apertureBladesStyle = {
+    transform: `scale(${1 - apertureProgress})`,
+    opacity: apertureOpen ? 0 : 1,
+    transition: apertureOpen ? 'opacity 0.5s ease-out' : 'none'
+  };
 
   return (
     <div className="min-h-screen bg-slate-900">
