@@ -157,9 +157,9 @@ const LandingPage = () => {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
-          <div className="flex flex-col items-center text-orange-400">
-            <div className="w-6 h-10 border-2 border-orange-400 rounded-full flex justify-center mb-2">
-              <div className="w-1 h-3 bg-orange-400 rounded-full mt-2 animate-pulse"></div>
+          <div className="flex flex-col items-center text-orange-300">
+            <div className="w-6 h-10 border-2 border-orange-300 rounded-full flex justify-center mb-2">
+              <div className="w-1 h-3 bg-orange-300 rounded-full mt-2 animate-pulse"></div>
             </div>
             <span className="text-xs font-mono tracking-wider uppercase">Scroll Down</span>
           </div>
