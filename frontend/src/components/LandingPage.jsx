@@ -191,9 +191,9 @@ const LandingPage = () => {
         <div 
           className="text-center z-10 px-6"
           style={{
-            opacity: canScrollVertically ? 1 : apertureProgress,
-            transform: `scale(${0.8 + (apertureProgress * 0.2)})`,
-            transition: apertureOpen ? 'all 0.5s ease-out' : 'none'
+            opacity: apertureProgress, // Start visible at 50% since aperture starts half-open
+            transform: `scale(${0.9 + (apertureProgress * 0.1)})`, // Subtle scale effect
+            transition: apertureOpen ? 'all 0.8s ease-out' : 'all 0.1s ease-out'
           }}
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight hero-text gradient-header-text">
