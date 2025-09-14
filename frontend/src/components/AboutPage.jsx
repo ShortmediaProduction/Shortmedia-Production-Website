@@ -86,9 +86,16 @@ const AboutPage = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-slate-300 leading-relaxed text-lg mb-6">
+                  <p className="text-slate-300 leading-relaxed text-lg mb-4">
                     {item.description}
                   </p>
+
+                  {/* Details */}
+                  {item.details && (
+                    <p className="text-orange-400 text-sm font-medium mb-6 italic">
+                      {item.details}
+                    </p>
+                  )}
 
                   {/* Image Placeholder */}
                   <div className="bg-slate-700 rounded-xl border-2 border-dashed border-slate-600 h-48 flex items-center justify-center group hover:border-orange-500 transition-all duration-300">
