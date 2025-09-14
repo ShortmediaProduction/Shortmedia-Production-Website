@@ -129,10 +129,9 @@ const LandingPage = () => {
           </div>
 
           <h1 className="text-7xl md:text-9xl font-bold mb-8 tracking-tight text-white leading-none">
-            <span className="block mb-4 bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
-              SHORT
+            <span className="block bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
+              SHORTMEDIA
             </span>
-            <span className="block text-white">MEDIA</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed">
