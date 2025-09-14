@@ -128,8 +128,8 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <h1 className="text-7xl md:text-9xl font-bold mb-8 tracking-tight text-white leading-none">
-            <span className="block bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
+          <h1 className="text-7xl md:text-9xl font-bold mb-8 tracking-tight leading-none">
+            <span className="block text-white bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text gradient-text-fallback">
               SHORTMEDIA
             </span>
           </h1>
