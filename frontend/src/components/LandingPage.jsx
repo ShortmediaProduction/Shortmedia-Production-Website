@@ -5,63 +5,63 @@ import { mockData } from '../data/mockData';
 const LandingPage = () => {
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
-  const [apertureProgress, setApertureProgress] = useState(0);
+  const [apertureProgress, setApertureProgress] = useState(0.5); // Start half-opened
   const [apertureOpen, setApertureOpen] = useState(false);
   const [canScrollVertically, setCanScrollVertically] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!canScrollVertically) {
-        // Aperture opening phase
+        // Aperture opening phase - start from 50% and go to 100%
         const scrolled = window.scrollY;
-        const maxScroll = window.innerHeight * 0.8; // 80% of viewport height to fully open
-        const progress = Math.min(scrolled / maxScroll, 1);
-        setApertureProgress(progress);
+        const maxScroll = window.innerHeight * 0.6; // Reduced scroll distance needed
+        const baseProgress = 0.5; // Start at 50%
+        const scrollProgress = Math.min(scrolled / maxScroll, 1);
+        const totalProgress = baseProgress + (scrollProgress * 0.5); // 50% to 100%
         
-        if (progress >= 1 && !apertureOpen) {
+        setApertureProgress(totalProgress);
+        
+        if (totalProgress >= 1 && !apertureOpen) {
           setApertureOpen(true);
-          setCanScrollVertically(true);
-          // Reset scroll position and enable normal scrolling
           setTimeout(() => {
+            setCanScrollVertically(true);
+            // Reset scroll and enable normal scrolling
             window.scrollTo(0, 0);
-            document.body.style.overflow = 'auto';
-          }, 500);
+          }, 800);
         }
-      } else {
-        // Normal page scrolling
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-
-        const elements = document.querySelectorAll('.animate-on-scroll');
-        elements.forEach((el) => observer.observe(el));
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Set up intersection observer for normal page sections
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    // Initially allow scrolling for aperture animation
-    if (!canScrollVertically) {
-      document.body.style.overflow = 'auto';
+    // Observe elements only after aperture is open
+    if (canScrollVertically) {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+      elements.forEach((el) => observer.observe(el));
     }
+
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.body.style.overflow = 'auto';
+      observer.disconnect();
     };
   }, [canScrollVertically, apertureOpen]);
 
   const apertureBladesStyle = {
     transform: `scale(${1 - apertureProgress})`,
     opacity: apertureOpen ? 0 : 1,
-    transition: apertureOpen ? 'opacity 0.5s ease-out' : 'none'
+    transition: apertureOpen ? 'opacity 0.8s ease-out' : 'transform 0.1s ease-out'
   };
 
   return (
