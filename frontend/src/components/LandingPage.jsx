@@ -110,56 +110,13 @@ const LandingPage = () => {
           ))}
         </div>
 
-        {/* Floating Video Frames */}
-        <div className="absolute inset-0 z-5">
-          {/* Frame 1 */}
-          <div 
-            className={`absolute top-1/4 left-1/4 w-32 h-20 bg-slate-800/80 border-2 border-orange-400/50 rounded-lg backdrop-blur-sm transition-all duration-1000 ${
-              activeFrame === 0 ? 'opacity-100 scale-110' : 'opacity-60 scale-100'
-            }`}
-          >
-            <div className="flex items-center justify-center h-full">
-              <Play size={24} className="text-orange-400" />
-            </div>
-            <div className="absolute -bottom-6 left-0 text-orange-400 text-xs font-mono">
-              Project_01.mp4
-            </div>
-          </div>
-
-          {/* Frame 2 */}
-          <div 
-            className={`absolute top-3/4 right-1/4 w-32 h-20 bg-slate-800/80 border-2 border-purple-400/50 rounded-lg backdrop-blur-sm transition-all duration-1000 ${
-              activeFrame === 1 ? 'opacity-100 scale-110' : 'opacity-60 scale-100'
-            }`}
-          >
-            <div className="flex items-center justify-center h-full">
-              <Film size={24} className="text-purple-400" />
-            </div>
-            <div className="absolute -bottom-6 left-0 text-purple-400 text-xs font-mono">
-              Brand_Film.mp4
-            </div>
-          </div>
-
-          {/* Frame 3 */}
-          <div 
-            className={`absolute top-1/2 right-1/3 w-32 h-20 bg-slate-800/80 border-2 border-blue-400/50 rounded-lg backdrop-blur-sm transition-all duration-1000 ${
-              activeFrame === 2 ? 'opacity-100 scale-110' : 'opacity-60 scale-100'
-            }`}
-          >
-            <div className="flex items-center justify-center h-full">
-              <Camera size={24} className="text-blue-400" />
-            </div>
-            <div className="absolute -bottom-6 left-0 text-blue-400 text-xs font-mono">
-              Social_Ad.mp4
-            </div>
-          </div>
-        </div>
+        {/* Floating Video Frames - REMOVED */}
 
         {/* Lens Flare Effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-white rounded-full opacity-80 animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-orange-400 rounded-full opacity-60 animate-pulse delay-500"></div>
-          <div className="absolute bottom-1/3 right-1/2 w-3 h-3 bg-blue-400/50 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-orange-300 rounded-full opacity-60 animate-pulse delay-500"></div>
+          <div className="absolute bottom-1/3 right-1/2 w-3 h-3 bg-blue-300/50 rounded-full animate-pulse delay-1000"></div>
         </div>
 
         {/* Main Content */}
