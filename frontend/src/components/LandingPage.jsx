@@ -146,17 +146,12 @@ const LandingPage = () => {
             Cinematic storytelling that captures hearts, minds, and moments that matter most.
           </p>
 
-          {/* Main CTA - Large Play Button */}
-          <div className="flex flex-col items-center">
-            <button className="group relative w-32 h-32 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-110 shadow-2xl mb-6">
-              <PlayCircle size={64} className="text-white group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+          {/* Subtle CTA */}
+          <div className="flex flex-col items-center mb-16">
+            <button className="group inline-flex items-center px-6 py-3 bg-slate-800/30 backdrop-blur-sm border border-slate-600/50 text-slate-200 rounded-full hover:bg-slate-700/50 hover:border-orange-400/50 hover:text-white transition-all duration-300 text-sm">
+              <Play size={16} className="mr-2 group-hover:text-orange-400 transition-colors duration-300" />
+              Watch Showreel
             </button>
-            
-            <div className="text-center">
-              <div className="text-white font-semibold mb-2">Watch Showreel</div>
-              <div className="text-slate-400 text-sm font-mono">Duration: 2:30 • 4K Quality</div>
-            </div>
           </div>
         </div>
 
